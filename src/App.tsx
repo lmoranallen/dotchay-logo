@@ -82,9 +82,22 @@ const FullDot = styled.div`
 `;
 
 const ConfettiBlock = styled.div`
-  width: 6%;
-  height: 45%;
-  
+  position: absolute;
+  display: flex;
+  left: 33%;
+  top: 33%;
+`;
+
+const ConfettiBlockLower = styled(ConfettiBlock)`
+  rotate: 180deg;
+  position: absolute;
+  display: flex;
+  top: 55%;
+`;
+
+const Confetti = styled.div`
+  width: 35px;
+  height: 120px;
   background-color: black;
   &:nth-child(3n + 1) {
     rotate: -50deg;
@@ -99,7 +112,6 @@ const ConfettiBlock = styled.div`
     background-color: red;
     margin-left: 120px;
   }
-  
 `;
 
 const VerticalScrollElement = styled.div`
@@ -108,10 +120,17 @@ const VerticalScrollElement = styled.div`
 const App = () => {
   return (
     <Container>
+      <ConfettiBlock>
+        <Confetti/>
+        <Confetti/>
+        <Confetti/>
+      </ConfettiBlock>
+      <ConfettiBlockLower>
+        <Confetti/>
+        <Confetti/>
+        <Confetti/>
+      </ConfettiBlockLower>
        <TextBox>
-       {/* <ConfettiBlock/>
-       <ConfettiBlock/>
-       <ConfettiBlock/> */}
         <VerticalBox>
           <VerticalScrollElement >
             {characterList.map( elem => <VerticalScrollText>{elem}</VerticalScrollText>)} 
