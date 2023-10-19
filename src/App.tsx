@@ -50,15 +50,21 @@ const expandDotAnimation = keyframes`
   100% { transform: scale(1000); }
 `;
 
-const loadPageAnimation = keyframes`
-  0% { opacity: 1; }
-  100% { background-color: white; z-index: -1; }
+const emitConfettiAnimation = keyframes`
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-45%, -45%) }
 `;
 
-const resetDot = keyframes`
-  0% { background-color: white; }
-  100% { background-color: black; transform: scale(1);}
-`
+const pushLeftHandTextAnimation = keyframes`
+  0% { }
+  100% {transform: translate(120px, 0px) }
+`;
+
+const loadPageAnimation = keyframes`
+  0% { opacity: 1; }
+  100% { z-index: -1; }
+`;
 
 const VerticalScrollText = styled(LeadingTitle)`
   animation-name: ${scrollAnimation};
@@ -67,55 +73,75 @@ const VerticalScrollText = styled(LeadingTitle)`
 `;
 
 const FullDot = styled.div`
-  z-index: 100;
-  width: 1%;
-  height: 1%;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: black;
   top: 51%;
   left: 50%;
   position: fixed;
+`;
+
+const AnimationDot = styled.div`
+  z-index: -100;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #009E60;
+  top: 51%;
+  left: 50%;
+  position: fixed;
   animation-name: ${expandDotAnimation} , ${loadPageAnimation};
-  animation-delay: 6s;
-  animation-duration: 5s;
+  animation-delay: 7s;
+  animation-duration: 4s;
   animation-fill-mode: forwards;
 `;
 
 const ConfettiBlock = styled.div`
   position: absolute;
   display: flex;
-  left: 33%;
-  top: 33%;
+  left: 32%;
+  top: 35%;
+  margin-bottom: 120px;
+`;
+
+const Confetti = styled.div`
+  width: 25px;
+  height: 100px;
+  opacity: 0;
+  background-color: #009E60;
+  &:nth-child(3n + 1) {
+    rotate: -30deg;
+    
+    margin-right: 120px;
+  }
+  &:nth-child(3n + 2) {
+    // background-color: blue;
+  }
+  &:nth-child(3n) {
+    rotate: 30deg;
+    // background-color: red;
+    margin-left: 120px;
+  }
+  animation-name: ${emitConfettiAnimation};
+  animation-delay: 6s;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards; 
 `;
 
 const ConfettiBlockLower = styled(ConfettiBlock)`
   rotate: 180deg;
   position: absolute;
   display: flex;
-  top: 55%;
-`;
-
-const Confetti = styled.div`
-  width: 35px;
-  height: 120px;
-  background-color: black;
-  &:nth-child(3n + 1) {
-    rotate: -50deg;
-    background-color: green;
-    margin-right: 120px;
-  }
-  &:nth-child(3n + 2) {
-    background-color: blue;
-  }
-  &:nth-child(3n) {
-    rotate: 50deg;
-    background-color: red;
-    margin-left: 120px;
-  }
+  top: 53%; 
 `;
 
 const VerticalScrollElement = styled.div`
-`
+  animation-name: ${pushLeftHandTextAnimation};
+  animation-delay: 10s;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+`;
 
 const App = () => {
   return (
@@ -136,7 +162,7 @@ const App = () => {
             {characterList.map( elem => <VerticalScrollText>{elem}</VerticalScrollText>)} 
           </VerticalScrollElement>
         </VerticalBox>
-        <FullDot/><LeadingTitle> chay </LeadingTitle>
+        <AnimationDot/><FullDot/><LeadingTitle> chay </LeadingTitle>
        </TextBox>
     </Container>
    
