@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 
-const characterList = ['dev', 'chef', 'gym', 'weeb', 'lee'];
+const characterList = ['dev', 'chef', 'gym', 'play', 'lee'];
 
 const Container = styled.div`
   display: flex;
@@ -58,7 +58,7 @@ const emitConfettiAnimation = keyframes`
 
 const pushLeftHandTextAnimation = keyframes`
   0% { }
-  100% {transform: translate(120px, 0px) }
+  100% {transform: translate(60px, 0px) }
 `;
 
 const loadPageAnimation = keyframes`
@@ -78,7 +78,7 @@ const FullDot = styled.div`
   border-radius: 50%;
   background-color: black;
   top: 51%;
-  left: 50%;
+  left: 49%;
   position: fixed;
 `;
 
@@ -89,7 +89,7 @@ const AnimationDot = styled.div`
   border-radius: 50%;
   background-color: #009E60;
   top: 51%;
-  left: 50%;
+  left: 49%;
   position: fixed;
   animation-name: ${expandDotAnimation} , ${loadPageAnimation};
   animation-delay: 7s;
@@ -162,7 +162,7 @@ const App = () => {
             {characterList.map( elem => <VerticalScrollText>{elem}</VerticalScrollText>)} 
           </VerticalScrollElement>
         </VerticalBox>
-        <AnimationDot/><FullDot/><LeadingTitle> chay </LeadingTitle>
+        <AnimationDot/><FullDot/><LeadingTitle>  chay </LeadingTitle>
        </TextBox>
     </Container>
    
